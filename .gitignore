@@ -1,0 +1,32 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Java compiled files
+target/
+*.class
+
+# Build tools
+.mvn/
+
+# Logs
+*.log
+log/
+debug.log
+
+# Configurations
+configuration.properties
+.env
+
+# Dependencies
+.m2/
+node_modules/
+
+# Cucumber Reports
+reports/
+cucumber-report.json
+cucumber-html-report/
