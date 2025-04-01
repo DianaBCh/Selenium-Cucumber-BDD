@@ -11,5 +11,4 @@ It automates web application testing following Behavior-Driven Development (BDD)
 
 🚀 How to Run  
 1. Clone this repository:  
-   ```sh
-   git clone <your-repo-url>
+   git clone <[(https://github.com/DianaBalanuta/Selenium-Cucumber-BDD.git)>
