@@ -7,8 +7,21 @@ It automates web application testing following Behavior-Driven Development (BDD)
 - Java  
 - Selenium WebDriver  
 - Cucumber  
-- Maven  
+- Maven
 
-🚀 How to Run  
-1. Clone this repository:  
+ 🏗️ Project Structure  
+📂 src/test/java
+┣ 📂 com.project.runner → Test Runners
+┣ 📂 com.project.stepDefs → Step Definitions
+┣ 📂 com.project.utils → Utility Classes
+📂 src/test/resources
+┣ 📂 features → Cucumber Feature Files
+┣ 📂 config → Configuration Files
+
+🚀 How to Run(in terminal)  
+1. Clone this repository:
    git clone <[(https://github.com/DianaBalanuta/Selenium-Cucumber-BDD.git)>
+2. Navigate to the project directory:
+   cd Selenium-Cucumber-BDD
+3. Run tests via Maven:
+   mvn test
