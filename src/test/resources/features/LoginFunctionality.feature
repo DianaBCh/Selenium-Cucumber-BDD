@@ -1,7 +1,8 @@
 @login
 Feature: Login functionality for registered users
 
-  Background: Given I am on the login page
+  Background:
+    Given I am on the login page
   # Test Case 1: Verify login page has username and password fields
   Scenario: Verify that the login page has fields for username and password
     Then I should see the username field
