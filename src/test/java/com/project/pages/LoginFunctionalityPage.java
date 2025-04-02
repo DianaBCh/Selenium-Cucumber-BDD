@@ -20,7 +20,7 @@ public class LoginFunctionalityPage {
     @FindBy(id = "login-button")
     public WebElement loginButton;
 
-    @FindBy(xpath = "//div/h3[.='Epic sadface: Password is required']")
+    @FindBy(xpath = "//div[contains(@class, 'error-message-container')]/h3")
     public WebElement errorMessage;
 
 }
