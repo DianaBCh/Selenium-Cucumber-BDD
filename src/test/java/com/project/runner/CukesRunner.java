@@ -14,9 +14,9 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "com/project/stepDefs",
-        dryRun = false, // true -> only runs feature file to get unimplemented snippets
+        dryRun = true, // true -> only runs feature file to get unimplemented snippets
                         // false -> it runs both feature file and step def.
-        tags = "@login",
+        tags = "@productPage",
         publish = true //generating a report with public link
 
 )

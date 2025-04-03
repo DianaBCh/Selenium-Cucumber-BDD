@@ -1,5 +1,7 @@
+@productPage
 Feature: Product Page - View Products
-
+  Background:
+    Given I am on the login page
   Scenario: Verify product list displays items with names, prices, images, and "Add to Cart" button
     Given I am logged in as a standard user
     When I navigate to the product page
