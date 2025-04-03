@@ -8,8 +8,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.module.Configuration;
+import java.time.Duration;
 
 public class LoginStepDefs {
 
@@ -35,12 +38,11 @@ public class LoginStepDefs {
 
     }
 
-    @When("I enter valid username {string} and valid password {string}")
-    public void iEnterValidUsernameAndValidPassword(String username, String password) {
+    @When("I enter valid username as {string} and valid password as {string}")
+    public void iEnterValidUsernameAsUsernameAndValidPasswordAsPassword(String username, String password) {
 
         loginFunctionalityPage.username.sendKeys(username);
         loginFunctionalityPage.password.sendKeys(password);
-
     }
 
 
@@ -52,6 +54,9 @@ public class LoginStepDefs {
     }
     @Then("I should be redirected to the dashboard")
     public void i_should_be_redirected_to_the_dashboard() {
+
+        //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        //wait.until(ExpectedConditions.urlToBe("https://www.saucedemo.com/inventory.html"));
 
         String expectedURL = "https://www.saucedemo.com/inventory.html";
         String actualURL = Driver.getDriver().getCurrentUrl();
@@ -65,6 +70,8 @@ public class LoginStepDefs {
         loginFunctionalityPage.username.sendKeys(username);
         loginFunctionalityPage.password.sendKeys(password);
     }
+
+
 
     @Then("I should see {string} error message")
     public void i_should_see_error_message(String expectedMessage) {
@@ -111,8 +118,6 @@ public class LoginStepDefs {
 
 
     }
-
-
 
 
 
