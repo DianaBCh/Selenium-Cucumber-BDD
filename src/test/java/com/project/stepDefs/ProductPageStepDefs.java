@@ -1,26 +1,22 @@
 package com.project.stepDefs;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ProductPageStepDefs {
 
-    @Given("I am logged in as a standard user")
-    public void i_am_logged_in_as_a_standard_user() {
-
+    @Given("I am logged in and accessed the product page successfully")
+    public void iAmLoggedInAndAccessedTheProductPageSuccessfully() {
     }
-    @When("I navigate to the product page")
-    public void i_navigate_to_the_product_page() {
 
+    @When("I see a list of products")
+    public void iSeeAListOfProducts() {
     }
-    @Then("I should see a list of products")
-    public void i_should_see_a_list_of_products() {
 
-    }
-    @Then("each product should have a name, price, image, and an {string} button")
-    public void each_product_should_have_a_name_price_image_and_an_button(String string) {
-
+    @Then("each product should have a name, price, image, and an Add to Cart button visible")
+    public void eachProductShouldHaveANamePriceImageAndAnAddToCartButtonVisible(DataTable products) {
     }
 
     @When("I sort products by {string}")
@@ -64,9 +60,7 @@ public class ProductPageStepDefs {
     public void i_should_be_redirected_to_the_product_details_page() {
 
     }
-    @Then("I should see the product name, price, description, and an {string} button")
-    public void i_should_see_the_product_name_price_description_and_an_button(String string) {
 
-    }
+
 
 }
