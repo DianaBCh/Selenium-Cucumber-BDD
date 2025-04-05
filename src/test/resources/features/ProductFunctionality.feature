@@ -7,13 +7,12 @@ Feature: Product Page - View Products
   Scenario: Verify product list displays items with names, prices, images, and Add to Cart button
     When I see a list of products
     Then each product should have a name, price, image, and an Add to Cart button visible
-      | productName   | price  | imageURL                |
-      | product1      | $19.99 | /images/product1.jpg     |
-      | product2      | $29.99 | /images/product2.jpg     |
-      | product3      | $39.99 | /images/product3.jpg     |
-      | product4      | $49.99 | /images/product4.jpg     |
-      | product5      | $59.99 | /images/product5.jpg     |
-      | product6      | $69.99 | /images/product6.jpg     |
+      | Sauce Labs Backpack              | $29.99 | /static/media/sauce-backpack-1200x1500.0a0b85a3.jpg|
+      | Sauce Labs Bike Light            | $9.99  | /static/media/bike-light-1200x1500.37c843b0.jpg    |
+      | Sauce Labs Bolt T-Shirt          | $15.99 | /static/media/bolt-shirt-1200x1500.c2599ac5.jpg    |
+      | Sauce Labs Fleece Jacket         | $49.99 | /static/media/sauce-pullover-1200x1500.51d7ffaf.jpg|
+      | Sauce Labs Onesie                | $7.99  | /static/media/red-onesie-1200x1500.2ec615b2.jpg    |
+      | Test.allTheThings() T-Shirt (Red)| $15.99 | /static/media/red-tatt-1200x1500.30dadef4.jpg      |
 
   Scenario: Verify sorting by Name (A to Z)
     When I sort products by "Name (A to Z)"
