@@ -14,22 +14,26 @@ Feature: Product Page - View Products
       | Sauce Labs Onesie                | $7.99  | /static/media/red-onesie-1200x1500.2ec615b2.jpg    |
       | Test.allTheThings() T-Shirt (Red)| $15.99 | /static/media/red-tatt-1200x1500.30dadef4.jpg      |
 
-  Scenario: Verify sorting by Name (A to Z)
-    When I sort products by "Name (A to Z)"
-    Then the products should be displayed in ascending alphabetical order
+  Scenario Outline: Verify product sorting
+    When I sort products by "<sortOption>"
+    Then the products should be displayed in "<expectedOrder>" order
 
-  Scenario: Verify sorting by Name (Z to A)
-    When I sort products by "Name (Z to A)"
-    Then the products should be displayed in descending alphabetical order
+    Examples:
+      | sortOption          | expectedOrder     |
+      | Name (A to Z)       | ascending         |
+      | Name (Z to A)       | descending        |
+      | Price (low to high) | priceAscending    |
+      | Price (high to low) | priceDescending   |
 
-  Scenario: Verify sorting by Price (Low to High)
-    When I sort products by "Price (low to high)"
-    Then the products should be sorted from lowest to highest price
+  Scenario Outline: Verify product details page for each item
+    When I click on "<productName>"
+    Then I should be redirected to the "<productName>" details page
 
-  Scenario: Verify sorting by Price (High to Low)
-    When I sort products by "Price (high to low)"
-    Then the products should be sorted from highest to lowest price
-
-  Scenario: Verify product details page
-    When I click on a product
-    Then I should be redirected to the product details page
+    Examples:
+      | productName                     |
+      | Sauce Labs Backpack             |
+      | Sauce Labs Bike Light           |
+      | Sauce Labs Bolt T-Shirt         |
+      | Sauce Labs Fleece Jacket        |
+      |Sauce Labs Onesie                |
+      |Test.allTheThings() T-Shirt (Red)|

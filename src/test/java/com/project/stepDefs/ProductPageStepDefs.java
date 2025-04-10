@@ -8,11 +8,16 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -38,10 +43,10 @@ public class ProductPageStepDefs {
 
         // Wait until the product list is visible
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfAllElements(productFunctionalityPage.productNames));
+        wait.until(ExpectedConditions.visibilityOfAllElements(productFunctionalityPage.itemNames));
 
         // Assert that the list is not empty
-        assertTrue("The product list is empty!", !productFunctionalityPage.productNames.isEmpty());
+        assertTrue("The product list is empty!", !productFunctionalityPage.itemNames.isEmpty());
     }
 
     @Then("each product should have a name, price, image, and an Add to Cart button visible")
@@ -56,16 +61,16 @@ public class ProductPageStepDefs {
 
             // Verify name
             System.out.println("Expected Product Name: " + expectedProductName);
-            System.out.println("Actual Product Name: " + productFunctionalityPage.productNames.get(i).getText());
+            System.out.println("Actual Product Name: " + productFunctionalityPage.itemNames.get(i).getText());
 
-            assertEquals(productFunctionalityPage.productNames.get(i).getText(), expectedProductName);
+            assertEquals(productFunctionalityPage.itemNames.get(i).getText(), expectedProductName);
 
 
             // Verify price
             System.out.println("Expected Price: " + expectedProductPrice);
-            System.out.println("Actual Price: " + productFunctionalityPage.productPrices.get(i).getText());
+            System.out.println("Actual Price: " + productFunctionalityPage.itemPrices.get(i).getText());
 
-            assertEquals(productFunctionalityPage.productPrices.get(i).getText(), expectedProductPrice);
+            assertEquals(productFunctionalityPage.itemPrices.get(i).getText(), expectedProductPrice);
 
             // Verify image
             System.out.println("Expected Image URL: " + expectedProductImage);
@@ -84,47 +89,66 @@ public class ProductPageStepDefs {
     }
 
     @When("I sort products by {string}")
-    public void i_sort_products_by(String string) {
+    public void iSortProductsBy(String sortOption) {
 
-    }
-    @Then("the products should be displayed in ascending alphabetical order")
-    public void the_products_should_be_displayed_in_ascending_alphabetical_order() {
-
-    }
-
-
-    @Then("the products should be displayed in descending alphabetical order")
-    public void the_products_should_be_displayed_in_descending_alphabetical_order() {
+        Select dropdown = new Select(productFunctionalityPage.sortProductContainer);
+        dropdown.selectByVisibleText(sortOption);
 
     }
 
+    @Then("the products should be displayed in {string} order")
+    public void theProductsShouldBeDisplayedInOrder(String expectedOrder) {
+
+       if (expectedOrder.equals("ascending") || expectedOrder.equals("descending")) {
+           List<WebElement> productElements = productFunctionalityPage.itemNames;
+           List<String> productNames = productElements.stream()
+                   .map(WebElement::getText)
+                   .collect(Collectors.toList());
 
 
-    @Then("the products should be sorted from lowest to highest price")
-    public void the_products_should_be_sorted_from_lowest_to_highest_price() {
+           List<String> sorted = new ArrayList<>(productNames);
+           Collections.sort(sorted);
+           if (expectedOrder.equals("descending")) {
+               Collections.reverse(sorted);
+           }
+
+           System.out.println("Actual names: " + productNames);
+           System.out.println("Expected: " + sorted);
+           assertEquals(sorted, productNames);
+
+
+       }else if (expectedOrder.equals("priceAscending") || expectedOrder.equals("priceDescending")) {
+           List<WebElement> priceElements = productFunctionalityPage.itemPrices;
+           List<Double> actualPrices = priceElements.stream()
+                   .map(el -> Double.parseDouble(el.getText().replace("$", "")))
+                   .collect(Collectors.toList());
+
+           List<Double> sortedPrices = new ArrayList<>(actualPrices);
+           Collections.sort(sortedPrices);
+           if (expectedOrder.equals("priceDescending")) {
+               Collections.reverse(sortedPrices);
+           }
+
+           System.out.println("Actual prices: " + actualPrices);
+           System.out.println("Expected: " + sortedPrices);
+           assertEquals(sortedPrices, actualPrices);
+       }
 
     }
 
+    @When("I click on {string}")
+    public void iClickOn(String productName) {
 
-    @Given("I am on the product page")
-    public void i_am_on_the_product_page() {
-
-    }
-
-    @Then("the products should be sorted from highest to lowest price")
-    public void the_products_should_be_sorted_from_highest_to_lowest_price() {
+        productFunctionalityPage.setProductElement(productName).click();
 
     }
 
-    @When("I click on a product")
-    public void i_click_on_a_product() {
+    @Then("I should be redirected to the {string} details page")
+    public void iShouldBeRedirectedToTheDetailsPage(String productName) {
 
+        String actualProductName = productFunctionalityPage.productDetailsName.getText();
+        System.out.println("Actual prices: " + actualProductName);
+        System.out.println("Expected: " + productName);
+        assertEquals(productName, actualProductName);
     }
-    @Then("I should be redirected to the product details page")
-    public void i_should_be_redirected_to_the_product_details_page() {
-
-    }
-
-
-
 }
