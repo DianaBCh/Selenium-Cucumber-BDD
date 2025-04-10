@@ -102,9 +102,12 @@ public class ProductPageStepDefs {
 
        if (expectedOrder.equals("ascending") || expectedOrder.equals("descending")) {
            List<WebElement> productElements = productFunctionalityPage.itemNames;
-           List<String> productNames = productElements.stream()
-                   .map(WebElement::getText)
-                   .collect(Collectors.toList());
+           List<String> productNames = new ArrayList<>();
+           for (WebElement item : productElements) {
+                 productNames.add(item.getText());
+           }
+
+
 
 
            List<String> sorted = new ArrayList<>(productNames);
@@ -118,11 +121,18 @@ public class ProductPageStepDefs {
            assertEquals(sorted, productNames);
 
 
-       }else if (expectedOrder.equals("priceAscending") || expectedOrder.equals("priceDescending")) {
+       }else if (expectedOrder.equals("priceAscending") || expectedOrder.equals("priceDescending")){
+
+
            List<WebElement> priceElements = productFunctionalityPage.itemPrices;
-           List<Double> actualPrices = priceElements.stream()
-                   .map(el -> Double.parseDouble(el.getText().replace("$", "")))
-                   .collect(Collectors.toList());
+           List<Double> actualPrices = new ArrayList<>();
+           for (WebElement item : priceElements) {
+                  String priceText = item.getText().replace("$", "");
+                  actualPrices.add(Double.parseDouble(priceText));
+
+           }
+
+
 
            List<Double> sortedPrices = new ArrayList<>(actualPrices);
            Collections.sort(sortedPrices);
