@@ -41,8 +41,6 @@ public class ProductFunctionalityPage {
 
         Driver.getDriver().findElement(By.xpath("//div[@data-test='inventory-item-name' and normalize-space(text())='" + productName + "']")).click();
 
-        ////div[contains(@class, 'inventory_details_name')]
-        //css = ".inventory_details_name.large_size"
 
 
     }
