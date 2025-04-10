@@ -2,12 +2,14 @@ package com.project.stepDefs;
 
 import com.project.pages.LoginFunctionalityPage;
 import com.project.pages.ProductFunctionalityPage;
+import com.project.utils.BrowserUtils;
 import com.project.utils.Driver;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -85,7 +87,6 @@ public class ProductPageStepDefs {
 
         }
 
-
     }
 
     @When("I sort products by {string}")
@@ -139,16 +140,21 @@ public class ProductPageStepDefs {
     @When("I click on {string}")
     public void iClickOn(String productName) {
 
-        productFunctionalityPage.setProductElement(productName).click();
+
+        productFunctionalityPage.setProductElement(productName);
 
     }
 
     @Then("I should be redirected to the {string} details page")
     public void iShouldBeRedirectedToTheDetailsPage(String productName) {
 
+        BrowserUtils.sleep(3);
+
         String actualProductName = productFunctionalityPage.productDetailsName.getText();
-        System.out.println("Actual prices: " + actualProductName);
-        System.out.println("Expected: " + productName);
+        System.out.println("Actual Product Name: " + actualProductName);
+        System.out.println("Expected Product Name: " + productName);
         assertEquals(productName, actualProductName);
+
     }
+
 }

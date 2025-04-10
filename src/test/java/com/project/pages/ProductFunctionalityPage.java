@@ -5,7 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class ProductFunctionalityPage {
@@ -31,15 +34,16 @@ public class ProductFunctionalityPage {
     @FindBy(className = "product_sort_container")
     public WebElement sortProductContainer;
 
-    @FindBy(className = ".inventory_details_name.large_size")
+    @FindBy(xpath = "//div[contains(@class, 'inventory_details_name')]")
     public WebElement productDetailsName;
 
-    public WebElement setProductElement(String productName) {
-        //String xpath = "//div[contains(@class, 'inventory_details_name') and contains(@class, 'large_size') and text()='" + productName + "']";
-        //return Driver.getDriver().findElement(By.xpath(xpath));
-        return Driver.getDriver().findElement(By.xpath("//div[@class='inventory_item_name' and text()='" + productName + "']"));
+    public void setProductElement(String productName) {
+
+        Driver.getDriver().findElement(By.xpath("//div[@data-test='inventory-item-name' and normalize-space(text())='" + productName + "']")).click();
+
+        ////div[contains(@class, 'inventory_details_name')]
+        //css = ".inventory_details_name.large_size"
+
+
     }
-
-
-
 }
