@@ -1,12 +1,13 @@
+
 Feature: Shopping Cart Functionality
 
   Background:
     Given I am logged in and accessed the product page successfully
-
+  @shoppingCart
   Scenario: Verify user can add single item to cart
     When the user adds "Sauce Labs Backpack" to the cart
     Then the cart badge should show "1"
-    And the "Add to cart" button should change to "Remove"
+    And the button for the item should display "Remove"
 
   Scenario: Verify user can add multiple items to cart
     When the user adds the following items to the cart:

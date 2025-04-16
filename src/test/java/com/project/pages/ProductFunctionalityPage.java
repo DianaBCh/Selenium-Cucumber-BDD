@@ -44,4 +44,21 @@ public class ProductFunctionalityPage {
 
 
     }
+
+    public void addItemToCart(String itemName) {
+        WebElement addButton = Driver.getDriver().findElement(By.xpath("//div[text()='" + itemName + "']/ancestor::div[@class='inventory_item']//button"));
+        addButton.click();
+    }
+
+    public String getCartBadgeCount() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        //WebElement badge = Driver.getDriver().findElement(By.className("shopping_cart_badge"));
+        WebElement badge = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".shopping_cart_badge")));
+        return badge.getText();
+    }
+
+    public String getButtonTextForItem(String itemName) {
+        WebElement button = Driver.getDriver().findElement(By.xpath("//div[text()='" + itemName + "']/ancestor::div[@class='inventory_item']//button"));
+        return button.getText();
+    }
 }
