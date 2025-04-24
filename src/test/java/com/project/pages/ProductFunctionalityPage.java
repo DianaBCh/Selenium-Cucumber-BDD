@@ -39,9 +39,6 @@ public class ProductFunctionalityPage {
     @FindBy(xpath = "//div[contains(@class, 'inventory_details_name')]")
     public WebElement productDetailsName;
 
-    @FindBy(id = "add-to-cart-sauce-labs-bolt-t-shirt")
-    public WebElement flJacketItem;
-
 
 
 
@@ -52,28 +49,10 @@ public class ProductFunctionalityPage {
     }
 
     public void addItemToCart(String itemName) {
-        /*
+
         WebElement addButton = Driver.getDriver().findElement(By.xpath("//div[@data-test='inventory-item-name' and normalize-space()='" + itemName + "']/ancestor::div[@class='inventory_item']//button"));
         addButton.click();
         BrowserUtils.sleep(5);
-
-         */
-
-
-
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-
-        // Wait until the item is rendered in the DOM
-        String itemXpath = "//div[@data-test='inventory-item-name' and normalize-space()='" + itemName + "']/ancestor::div[@class='inventory_item']//button";
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(itemXpath)));
-
-        // Now wait for the corresponding 'Add to cart' button
-        String buttonXpath = itemXpath + "/ancestor::div[@class='inventory_item']//button[contains(text(), 'Add to cart')]";
-        WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(buttonXpath)));
-
-        // Optional: log what's going on
-        System.out.println("Clicking add button for: " + itemName);
-        addButton.click();
 
 
     }
@@ -84,16 +63,6 @@ public class ProductFunctionalityPage {
         WebElement badge = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".shopping_cart_badge")));
 
         return badge.getText();
-
-        /*
-
-        List<WebElement> badges = Driver.getDriver().findElements(By.cssSelector(".shopping_cart_badge"));
-            if (badges.isEmpty()) {
-            return ""; // No badge present
-            }
-        return badges.get(0).getText();
-
-         */
 
     }
 

@@ -27,11 +27,6 @@ public class ShoppingCartStepDefs {
     public void the_user_adds_to_the_cart(String item) {
         itemName = item;
         productFunctionalityPage.addItemToCart(item);
-        //productFunctionalityPage.flJacketItem.click();
-        //WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-        //WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(productFunctionalityPage.flJacketItem));
-        //addButton.click();
-        BrowserUtils.sleep(3);
 
     }
 
