@@ -30,8 +30,9 @@ public class ProductPageStepDefs {
 
     ProductFunctionalityPage productFunctionalityPage  = new ProductFunctionalityPage();
 
-    @Given("I am logged in and accessed the product page successfully")
-    public void iAmLoggedInAndAccessedTheProductPageSuccessfully() {
+
+    @Given("user is logged in and accessed the product page successfully")
+    public void userIsLoggedInAndAccessedTheProductPageSuccessfully() {
 
         loginFunctionalityPage.login();
         String expectedURL = "https://www.saucedemo.com/inventory.html";
@@ -166,5 +167,6 @@ public class ProductPageStepDefs {
         assertEquals(productName, actualProductName);
 
     }
+
 
 }
