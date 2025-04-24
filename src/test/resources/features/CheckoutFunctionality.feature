@@ -1,4 +1,5 @@
 
+@checkout
 Feature: Checkout Functionality
   As a registered user,
   I want to complete a checkout process after adding items to the cart,
@@ -12,7 +13,7 @@ Feature: Checkout Functionality
   Scenario: Verify checkout with valid information is successful
     When the user adds "Sauce Labs Bike Light" to the cart
     And The user navigates to the checkout page
-    And The user fills in First Name as "John", Last Name as "Doe", and Zip/Postal Code as "12345"
+    And The user fills in First Name as "John", Last Name as "Doe", and Postal Code as "12345"
     And The user clicks the Continue button
     And The user clicks the Finish button
     Then The user should see a confirmation message "Thank you for your order!"
@@ -43,7 +44,7 @@ Feature: Checkout Functionality
   Scenario: Verify validation works when only Last Name and Zip/Postal Code are filled
     When the user adds "Sauce Labs Fleece Jacket" to the cart
     And The user navigates to the checkout page
-    And The user fills Last Name as "Doe" and Zip/Postal Code as "12345"
+    And The user fills Last Name as "Doe" and Postal Code as "12345"
     And Leaves First Name field empty
     And The user clicks the Continue button
     Then An error message should be displayed: "Error: First Name is required"
@@ -74,7 +75,7 @@ Feature: Checkout Functionality
       | Sauce Labs Onesie        |
       | Sauce Labs Fleece Jacket |
     And The user navigates to the checkout page
-    And The user fills in First Name as "John", Last Name as "Doe", and Zip/Postal Code as "12345"
+    And The user fills in First Name as "John", Last Name as "Doe", and Postal Code as "12345"
     And The user clicks the Continue button
     And The user clicks the Finish button
     Then The user should see a confirmation message "Thank you for your order!"
@@ -83,9 +84,9 @@ Feature: Checkout Functionality
   Scenario: Verify Back Home button is present and functional after finishing Checkout
     When the user adds "Sauce Labs Bike Light" to the cart
     And The user navigates to the checkout page
-    And The user fills in First Name as "John", Last Name as "Doe", and Zip/Postal Code as "12345"
+    And The user fills in First Name as "John", Last Name as "Doe", and Postal Code as "12345"
     And The user clicks the Continue button
     And The user clicks the Finish button
-    Then The "Back Home" button should be visible
-    And When the user clicks the "Back Home" button
+    Then The Back Home button should be visible
+    And When the user clicks the Back Home button
     Then The user should be redirected to the Products page
