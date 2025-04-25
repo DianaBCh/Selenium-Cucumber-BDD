@@ -1,24 +1,53 @@
 package com.project.stepDefs;
 
+import com.project.pages.CheckoutFunctionalityPage;
+import com.project.utils.BrowserUtils;
+import com.project.utils.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class CheckoutStepDefs {
+
+    CheckoutFunctionalityPage checkoutFunctionalityPage = new CheckoutFunctionalityPage();
 
     @When("The user navigates to the checkout page")
     public void the_user_navigates_to_the_checkout_page() {
 
+        checkoutFunctionalityPage.cartButton.click();
+        BrowserUtils.sleep(3);
+        checkoutFunctionalityPage.checkoutButton.click();
+
     }
 
     @When("The user fills in First Name as {string}, Last Name as {string}, and Postal Code as {string}")
-    public void the_user_fills_in_first_name_as_last_name_as_and_zip_postal_code_as(String string, String string2, String string3) {
+    public void the_user_fills_in_first_name_as_last_name_as_and_zip_postal_code_as(String firstName, String lastName, String postalCode) {
+
+        checkoutFunctionalityPage.fillCheckoutForm(firstName,lastName,postalCode);
 
     }
 
     @When("The user clicks the Continue button")
     public void the_user_clicks_the_continue_button() {
 
+        checkoutFunctionalityPage.continueButton.click();
+
+    }
+
+    @Then("The user should be redirected to the Overview page")
+    public void theUserShouldBeRedirectedToTheOverviewPage() {
+
+        String actualTitle = Driver.getDriver().findElement(By.className("title")).getText();
+        Assert.assertEquals("Checkout: Overview", actualTitle);//Checkout: Overview
+
+    }
+
+    @And("The Finish button should be displayed")
+    public void theFinishButtonShouldBeDisplayed() {
+
+        Assert.assertTrue(checkoutFunctionalityPage.finishButton.isDisplayed());
     }
 
     @When("The user clicks the Finish button")
@@ -99,6 +128,7 @@ public class CheckoutStepDefs {
     public void the_user_should_be_redirected_to_the_products_page() {
 
     }
+
 
 
 }

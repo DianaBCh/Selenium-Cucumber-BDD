@@ -11,12 +11,12 @@ Feature: Checkout Functionality
 
   @positive
   Scenario: Verify checkout with valid information is successful
-    When the user adds "Sauce Labs Bike Light" to the cart
+    When the user adds "Sauce Labs Backpack" to the cart
     And The user navigates to the checkout page
-    And The user fills in First Name as "John", Last Name as "Doe", and Postal Code as "12345"
+    When The user fills in First Name as "John", Last Name as "Doe", and Postal Code as "12345"
     And The user clicks the Continue button
-    And The user clicks the Finish button
-    Then The user should see a confirmation message "Thank you for your order!"
+    Then The user should be redirected to the Overview page
+    And The Finish button should be displayed
 
   @negative
   Scenario: Verify that the system prevents proceeding with empty fields
@@ -26,7 +26,6 @@ Feature: Checkout Functionality
       | Sauce Labs Backpack              |
       | Test.allTheThings() T-Shirt (Red)|
     And The user navigates to the checkout page
-    And The user leaves all fields empty
     And The user clicks the Continue button
     Then An error message should be displayed: "Error: First Name is required"
 
