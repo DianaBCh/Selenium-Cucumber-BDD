@@ -8,6 +8,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CheckoutStepDefs {
 
@@ -16,9 +20,27 @@ public class CheckoutStepDefs {
     @When("The user navigates to the checkout page")
     public void the_user_navigates_to_the_checkout_page() {
 
+        /*
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+        // wait until the cart button is clickable
+        wait.until(ExpectedConditions.elementToBeClickable(checkoutFunctionalityPage.cartButton));
         checkoutFunctionalityPage.cartButton.click();
-        BrowserUtils.sleep(3);
+
+        // wait for URL to change
+        wait.until(ExpectedConditions.urlToBe("https://www.saucedemo.com/cart.html"));
+
         checkoutFunctionalityPage.checkoutButton.click();
+
+         */
+
+
+        checkoutFunctionalityPage.cartButton.click();
+        System.out.println("Current URL: " + Driver.getDriver().getCurrentUrl());
+        checkoutFunctionalityPage.checkoutButton.click();
+
+
 
     }
 

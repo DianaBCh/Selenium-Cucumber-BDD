@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,6 +39,8 @@ public class ProductPageStepDefs {
         String expectedURL = "https://www.saucedemo.com/inventory.html";
         String actualURL = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("User is NOT on the dashboard page!", expectedURL, actualURL);
+
+
 
     }
 

@@ -2,9 +2,13 @@ package com.project.pages;
 
 import com.project.utils.ConfigurationReader;
 import com.project.utils.Driver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginFunctionalityPage {
 
@@ -28,6 +32,7 @@ public class LoginFunctionalityPage {
         username.sendKeys(ConfigurationReader.getProperty("username"));
         password.sendKeys(ConfigurationReader.getProperty("password"));
         loginButton.click();
+
     }
 
 }
