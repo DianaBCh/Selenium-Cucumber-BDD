@@ -11,7 +11,7 @@ public class CheckoutFunctionalityPage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(xpath = "//a[@data-test='shopping-cart-link']")
+    @FindBy(css = "a.shopping_cart_link")
     public WebElement cartButton;
 
     @FindBy(xpath = "//button[@data-test='checkout']")
