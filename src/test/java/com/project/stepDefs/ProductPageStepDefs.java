@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -30,13 +31,16 @@ public class ProductPageStepDefs {
 
     ProductFunctionalityPage productFunctionalityPage  = new ProductFunctionalityPage();
 
-    @Given("I am logged in and accessed the product page successfully")
-    public void iAmLoggedInAndAccessedTheProductPageSuccessfully() {
+
+    @Given("user is logged in and accessed the product page successfully")
+    public void userIsLoggedInAndAccessedTheProductPageSuccessfully() {
 
         loginFunctionalityPage.login();
         String expectedURL = "https://www.saucedemo.com/inventory.html";
         String actualURL = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("User is NOT on the dashboard page!", expectedURL, actualURL);
+
+
 
     }
 
@@ -166,5 +170,6 @@ public class ProductPageStepDefs {
         assertEquals(productName, actualProductName);
 
     }
+
 
 }

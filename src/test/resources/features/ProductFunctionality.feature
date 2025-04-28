@@ -2,7 +2,7 @@
 Feature: Product Page - View Products
 
   Background:
-    Given I am logged in and accessed the product page successfully
+    Given user is logged in and accessed the product page successfully
 
   Scenario: Verify product list displays items with names, prices, images, and Add to Cart button
     When I see a list of products

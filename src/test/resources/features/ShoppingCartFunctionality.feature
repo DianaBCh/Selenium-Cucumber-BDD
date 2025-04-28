@@ -2,7 +2,7 @@
 Feature: Shopping Cart Functionality
 
   Background:
-    Given I am logged in and accessed the product page successfully
+    Given user is logged in and accessed the product page successfully
 
   Scenario: Verify user can add single item to cart
     When the user adds "Sauce Labs Bike Light" to the cart

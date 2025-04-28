@@ -5,8 +5,12 @@ import com.project.utils.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -14,12 +18,13 @@ public class Hooks {
 
     @Before
     public void setUpMethod(){
-            Driver.getDriver().manage().window().maximize();
-            Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            Driver.getDriver().get(ConfigurationReader.getProperty("swagLabs"));
-            System.out.println("---> @Before: RUNNING BEFORE EACH SCENARIO");
 
-        }
+        Driver.getDriver().manage().window().maximize();
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Driver.getDriver().get(ConfigurationReader.getProperty("swagLabs"));
+        System.out.println("---> @Before: RUNNING BEFORE EACH SCENARIO");
+
+    }
 
 
 
