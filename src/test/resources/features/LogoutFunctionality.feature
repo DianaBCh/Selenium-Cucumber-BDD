@@ -1,3 +1,4 @@
+@logout
 Feature: Logout Functionality
   As a logged-in user,
   I want to log out from the system,
@@ -8,33 +9,41 @@ Feature: Logout Functionality
 
   Scenario: Verify that the Logout button is visible in the navigation menu
     When the user clicks on the burger (☰) menu icon
-    Then The Logout button should be visible in the navigation menu
+    Then the Logout button should be visible in the navigation menu
 
   Scenario: Verify user can log out successfully
     When the user clicks on the burger (☰) menu icon
-    And The user clicks on the Logout button
-    Then The user should be redirected to the login page
+    And the user clicks on the Logout button
+    Then the user should be redirected to the login page
 
   Scenario: Verify that browser Back button cannot access restricted pages after logout
     When the user clicks on the burger (☰) menu icon
-    And The user clicks on the Logout button
-    And The user attempts to navigate back using the browser Back button
-    Then The user should remain on the login page
-    And The Products page should not be accessible
+    And the user clicks on the Logout button
+    And the user attempts to navigate back using the browser Back button
+    Then the user should remain on the login page
+    And the Products page should not be accessible
 
-  Scenario: Verify restricted pages are not accessible after logout via URL
+  Scenario Outline: Verify restricted pages are not accessible after logout via URL
     When the user clicks on the burger (☰) menu icon
-    And The user clicks on the Logout button
-    And The user navigates directly to the Products page via URL
-    Then An error message should be displayed: "Epic sadface: You can only access '/inventory.html' when you are logged in."
+    And the user clicks on the Logout button
+    And the user navigates directly to "<Page Name>" via URL
+    Then an error message should be displayed: "Epic sadface: You can only access '<Page URL>' when you are logged in."
 
-  Scenario: Verify Logout button remains consistent across different pages
-    When the user navigates to the Products page
-    And The user checks the burger (☰) menu
-    Then The Logout button should be visible
-    When the user navigates to the Cart page
-    And The user checks the burger (☰) menu
-    Then The Logout button should be visible
-    When the user navigates to the Checkout page
-    And The user checks the burger (☰) menu
-    Then The Logout button should be visible
+    Examples:
+      | Page Name             | Page URL                  |
+      | Products              | /inventory.html           |
+      | Your Cart             | /cart.html                |
+      | Checkout Information  | /checkout-step-one.html   |
+      | Checkout Overview     | /checkout-step-two.html   |
+      | Checkout Complete     | /checkout-complete.html   |
+
+  Scenario Outline: Verify Logout button remains consistent across different pages
+    When the user navigates to the <Page> page
+    And the user checks the burger (☰) menu
+    Then the Logout button should be visible
+
+    Examples:
+      | Page     |
+      | Products |
+      | Cart     |
+      | Checkout |
