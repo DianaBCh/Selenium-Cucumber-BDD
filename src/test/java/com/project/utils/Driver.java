@@ -30,26 +30,6 @@ public class Driver {
             // Create WebDriver based on browser type
             switch (browserType) {
                 case "chrome":
-                    /*
-                    ChromeOptions chromeOptions = new ChromeOptions();
-
-                    // Full disable of password manager
-                    Map<String, Object> prefs = new HashMap<>();
-                    prefs.put("credentials_enable_service", false);
-                    prefs.put("profile.password_manager_enabled", false);
-                    chromeOptions.setExperimentalOption("prefs", prefs);
-
-                    // Use a temporary data directory to prevent Chrome from using any saved profile
-                    chromeOptions.addArguments("--user-data-dir=/tmp/temp_chrome_profile");
-
-                    // Other useful arguments
-                    chromeOptions.addArguments("--disable-notifications");
-                    chromeOptions.addArguments("--disable-popup-blocking");
-                    chromeOptions.setCapability("unhandledPromptBehavior", "accept");
-
-                     */
-
-                    // Setup ChromeDriver with options
                     driverPool.set(new ChromeDriver());
                     driverPool.get().manage().window().maximize();
                     driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

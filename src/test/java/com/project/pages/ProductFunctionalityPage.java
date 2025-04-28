@@ -52,7 +52,7 @@ public class ProductFunctionalityPage {
 
         WebElement addButton = Driver.getDriver().findElement(By.xpath("//div[@data-test='inventory-item-name' and normalize-space()='" + itemName + "']/ancestor::div[@class='inventory_item']//button"));
         addButton.click();
-        BrowserUtils.sleep(5);
+        BrowserUtils.sleep(2);
 
 
     }
