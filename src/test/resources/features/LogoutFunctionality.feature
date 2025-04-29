@@ -26,24 +26,27 @@ Feature: Logout Functionality
   Scenario Outline: Verify restricted pages are not accessible after logout via URL
     When the user clicks on the burger (☰) menu icon
     And the user clicks on the Logout button
-    And the user navigates directly to "<Page Name>" via URL
-    Then an error message should be displayed: "Epic sadface: You can only access '<Page URL>' when you are logged in."
+    And the user navigates directly to "<Page URL>" via URL
+    Then an error message should be displayed: "<Expected Error Message>"
 
     Examples:
-      | Page Name             | Page URL                  |
-      | Products              | /inventory.html           |
-      | Your Cart             | /cart.html                |
-      | Checkout Information  | /checkout-step-one.html   |
-      | Checkout Overview     | /checkout-step-two.html   |
-      | Checkout Complete     | /checkout-complete.html   |
+      | Page URL                 | Expected Error Message                                                   |
+      | /inventory.html          | Epic sadface: You can only access '/inventory.html' when you are logged in. |
+      | /cart.html               | Epic sadface: You can only access '/cart.html' when you are logged in.      |
+      | /checkout-step-one.html  | Epic sadface: You can only access '/checkout-step-one.html' when you are logged in. |
+      | /checkout-step-two.html  | Epic sadface: You can only access '/checkout-step-two.html' when you are logged in. |
+      | /checkout-complete.html  | Epic sadface: You can only access '/checkout-complete.html' when you are logged in. |
+
 
   Scenario Outline: Verify Logout button remains consistent across different pages
-    When the user navigates to the <Page> page
-    And the user checks the burger (☰) menu
-    Then the Logout button should be visible
+    When the user navigates to the "<PageName>" page
+    And the user clicks on the burger (☰) menu icon
+    Then the Logout button should be visible in the navigation menu
 
     Examples:
-      | Page     |
-      | Products |
-      | Cart     |
-      | Checkout |
+      | PageName                   |
+      | Products                   |
+      | Cart                       |
+      | Checkout: Your Information |
+      | Checkout: Overview         |
+      | Checkout: Complete!        |
