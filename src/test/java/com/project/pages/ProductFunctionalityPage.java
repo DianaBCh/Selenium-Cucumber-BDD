@@ -39,6 +39,12 @@ public class ProductFunctionalityPage {
     @FindBy(xpath = "//div[contains(@class, 'inventory_details_name')]")
     public WebElement productDetailsName;
 
+    @FindBy(id = "react-burger-menu-btn")
+    public WebElement burgerMenuButton;
+
+    @FindBy(id = "logout_sidebar_link")
+    public WebElement logoutButton;
+
 
 
 

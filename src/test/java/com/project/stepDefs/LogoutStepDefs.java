@@ -1,25 +1,36 @@
 package com.project.stepDefs;
 
+import com.project.pages.ProductFunctionalityPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class LogoutStepDefs {
+
+    ProductFunctionalityPage productFunctionalityPage = new ProductFunctionalityPage();
 
     @When("the user clicks on the burger \\(☰) menu icon")
     public void the_user_clicks_on_the_burger_menu_icon() {
 
+        productFunctionalityPage.burgerMenuButton.click();
+
     }
     @Then("the Logout button should be visible in the navigation menu")
     public void the_logout_button_should_be_visible_in_the_navigation_menu() {
+
+        Assert.assertTrue(productFunctionalityPage.logoutButton.isDisplayed());
 
     }
 
     @When("the user clicks on the Logout button")
     public void the_user_clicks_on_the_logout_button() {
 
+        productFunctionalityPage.logoutButton.click();
+
     }
     @Then("the user should be redirected to the login page")
     public void the_user_should_be_redirected_to_the_login_page() {
+
 
     }
 
