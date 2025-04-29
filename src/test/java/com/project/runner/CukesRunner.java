@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         glue = "com/project/stepDefs",
         dryRun = false, // true -> only runs feature file to get unimplemented snippets
                         // false -> it runs both feature file and step def.
-        tags = "@checkout",
+        tags = "@logout",
         publish = true //generating a report with public link
 
 )
