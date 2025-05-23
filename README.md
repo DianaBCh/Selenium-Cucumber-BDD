@@ -27,6 +27,7 @@ The goal is to showcase my ability to:
 
 ```
 src/test/java
+ ├── com.project.page → Page Object classes (POM design pattern)
  ├── com.project.runner     → Test Runner classes
  ├── com.project.stepDefs   → Step Definitions (BDD glue code)
  └── com.project.utils      → Utility classes
