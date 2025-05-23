@@ -1,61 +1,73 @@
-Selenium-Cucumber-BDD Project
 
-About:
-This is a Test Automation project built with Java, Selenium WebDriver**, Cucumber, and Maven. It follows Behavior-Driven Development (BDD) principles to automate end-to-end testing scenarios for a sample web application — [Swag Labs](https://www.saucedemo.com/).
-The goal of this project is to demonstrate understanding of BDD practices, Selenium automation, and test design in a real-world structure.
+# Selenium-Cucumber-BDD Automation Project
 
-Technologies Used  
-- Java  
-- Selenium WebDriver  
-- Cucumber  
-- Maven  
-- JUnit  
-- IntelliJ IDEA (for development)
+## 📌 About This Project
 
-Project Structure  
+This is a **portfolio test automation project** built using **Java, Selenium WebDriver, Cucumber (BDD), Maven, and JUnit**. It automates end-to-end test scenarios for a demo web application — [Swag Labs](https://www.saucedemo.com/).
 
+The goal is to showcase my ability to:
+
+* Design and structure automated test suites using best practices
+* Apply **Behavior-Driven Development (BDD)** with Cucumber
+* Perform browser-based testing using Selenium WebDriver
+* Work with Java/Maven in a real-world framework
+
+
+## 🛠️ Technologies Used
+
+* Java
+* Selenium WebDriver
+* Cucumber
+* Maven
+* JUnit
+* IntelliJ IDEA
+
+
+## 🧱 Project Structure
+
+```
 src/test/java
- - com.project.runner       → Test Runner classes
- - com.project.stepDefs     → Step Definitions
- - com.project.utils        → Utility classes
+ ├── com.project.runner     → Test Runner classes
+ ├── com.project.stepDefs   → Step Definitions (BDD glue code)
+ └── com.project.utils      → Utility classes
 
 src/test/resources
- - features                 → Cucumber Feature Files
+ └── features               → Cucumber Feature Files
 
-configuration.properties    → Configuration file at project root
-
-
-How to Run Tests
-
-Run via Maven (Command Line)
-
-```bash
-git clone https://github.com/DianaBCh/Selenium-Cucumber-BDD.git
-cd Selenium-Cucumber-BDD
-mvn clean test
+configuration.properties    → Configurations (URLs, credentials, etc.)
 ```
 
-Run from IntelliJ
 
-- Open the project in IntelliJ.
-- Navigate to the CukesRunner class inside the runner package.
-- Right-click the class → Run 'CukesRunner'.
+## ▶️ How to Run the Tests
 
-Run via Maven Lifecycle in IntelliJ
+### ✅ Option 1: Run from IntelliJ
 
-- Go to the Maven tab (right side of IntelliJ).
-- Expand Lifecycle → Double-click 'test'.
+1. Open the project in IntelliJ IDEA.
+2. Navigate to `CukesRunner` in the `runner` package.
+3. Right-click the class → **Run 'CukesRunner'**.
 
-Test Features Implemented:
-- Login
-- Product Listing
-- Shopping Cart
-- Checkout Process
-- Logout
-- End-to-End User Flow  
+### ✅ Option 2: Run using Maven
 
-Notes:
-- Thread.sleep was temporarily used in Chrome to handle sync issues during local runs. Firefox runs cleanly without waits.
-- All scenarios are tagged for selective execution if needed.
-- This project is for educational and portfolio purposes.
+1. Open the Maven tab (usually on the right).
+2. Expand `Lifecycle` → Double-click **test**.
+
+
+## ✅ Test Scenarios Covered
+
+* 🔐 Login
+* 📦 Product Listing
+* 🛒 Shopping Cart
+* 💳 Checkout Process
+* 🚪 Logout
+* 🔄 Full End-to-End User Flow
+
+Each test is written in **Gherkin** (Given-When-Then format) for clarity and collaboration.
+
+
+## 🔍 Notes
+
+* Temporary `Thread.sleep` used for sync issues in Chrome; Firefox runs cleanly.
+* Scenarios are tagged (e.g., `@login`, `@checkout`) for selective execution.
+* This project is for **educational and portfolio purposes** to demonstrate automation skills.
+
 
