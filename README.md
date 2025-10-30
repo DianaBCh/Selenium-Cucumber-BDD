@@ -69,6 +69,5 @@ Each test is written in **Gherkin** (Given-When-Then format) for clarity and col
 
 * Temporary `Thread.sleep` used for sync issues in Chrome; Firefox runs cleanly.
 * Scenarios are tagged (e.g., `@login`, `@checkout`) for selective execution.
-* This project is for **educational and portfolio purposes** to demonstrate automation skills.
 
 
